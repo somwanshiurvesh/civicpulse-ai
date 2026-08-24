@@ -1,0 +1,2 @@
+# CivicPulse AI Service - Python Requirements
+# Empty on Day 1: The current worker placeholder uses Python standard library modules only.

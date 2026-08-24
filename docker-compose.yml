@@ -1,0 +1,50 @@
+services:
+  db:
+    image: postgis/postgis:15-3.3
+    container_name: civicpulse_db
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-civicpulse}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  server:
+    build: ./server
+    container_name: civicpulse_server
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - DB_HOST=db
+      - DB_USER=${DB_USER:-postgres}
+      - DB_PASSWORD=${DB_PASSWORD:-postgres}
+      - DB_NAME=${DB_NAME:-civicpulse}
+      - JWT_SECRET=${JWT_SECRET:-supersecretkey}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  client:
+    build: ./client
+    container_name: civicpulse_client
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server
+
+  ai:
+    build: ./ai
+    container_name: civicpulse_ai
+    ports:
+      - "5001:5001"
+
+volumes:
+  pgdata:
