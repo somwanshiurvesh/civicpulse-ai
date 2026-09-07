@@ -11,9 +11,9 @@ All REST APIs across the entire CivicPulse AI ecosystem (both Node.js and Python
     Authorization: Bearer <token>
     ```
 *   **Timestamps**: All timestamps returned must use ISO 8601 UTC format (e.g., `2026-08-18T21:54:33Z`).
-*   **Geospatial Coords**: Latitude and longitude are passed as decimal float coordinates in payloads:
-    *   `latitude`: decimal
-    *   `longitude`: decimal
+*   **Geospatial Coords**: Latitude and longitude are passed as decimal float coordinates in payloads (both `latitude`/`longitude` and `lat`/`lng` formats are accepted for compatibility; stored as canonical `lat`, `lng`, and PostGIS `location geometry(Point,4326)` in the database):
+    *   `latitude` / `lat`: decimal
+    *   `longitude` / `lng`: decimal
 
 ---
 
