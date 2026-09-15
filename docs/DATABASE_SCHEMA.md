@@ -20,8 +20,8 @@ Core entity. Contains ONLY the ID, location, user reference, timestamps, and cur
 *   `description`: `TEXT`
 *   `category`: `VARCHAR(30)`
 *   `subcategory`: `VARCHAR(30)`
-*   `latitude`: `DECIMAL(9,6)`
-*   `longitude`: `DECIMAL(9,6)`
+*   `lat`: `DECIMAL(9,6)`
+*   `lng`: `DECIMAL(9,6)`
 *   `location`: `GEOMETRY(Point, 4326)` (PostGIS spatial point)
 *   `status`: `VARCHAR(20)`
 *   `created_at`: `TIMESTAMP WITH TIME ZONE`
