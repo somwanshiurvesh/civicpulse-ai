@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import ReportWizard from './components/wizard/ReportWizard'
 
 function App() {
   const [serverStatus, setServerStatus] = useState('Checking...')
@@ -35,7 +36,7 @@ function App() {
           </div>
           <nav className="flex gap-6 items-center">
             <span className="text-xs px-3 py-1 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/20 font-medium">
-              Day 1 Foundation Active
+              Day 6 Wizard Active
             </span>
           </nav>
         </div>
@@ -44,13 +45,18 @@ function App() {
       {/* Main Content */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-6 py-12 flex flex-col gap-12">
         {/* Hero Section */}
-        <section className="text-center py-8">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 bg-gradient-to-b from-slate-55 to-slate-200">
+        <section className="text-center py-4">
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-3 bg-gradient-to-b from-slate-100 to-slate-300">
             Empowering Communities with <span className="bg-gradient-to-r from-teal-400 to-emerald-300 bg-clip-text text-transparent">AI-Driven Reporting</span>
           </h1>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-base text-slate-400 max-w-2xl mx-auto">
             Turning real-world observations into structured, geolocated, and evidence-backed digital records for downstream routing.
           </p>
+        </section>
+
+        {/* Day 6 Citizen Reporting Wizard Section */}
+        <section className="w-full">
+          <ReportWizard />
         </section>
 
         {/* Status Grid */}
